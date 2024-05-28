@@ -8,40 +8,46 @@
 // 입력: "abc", "def"
 // 출력: false
 
-
 function isSubstring(s1, s2) {
-    // 문제 풀이
+  //s1의 길이가 더 길 경우 false
+  // s2순회(for) s2-s1길이만큼,
+  //s1 길이 만큼 비교. slice(i, i+ s1.length)
+
+  if (s1.length > s2.length) return false;
+  for (let i = 0; i <= s2.length - s1.length; i++) {
+    if (s1 === s2.slice(i, i + s1.length)) return true;
+  }
+  return false;
 }
 
 // 테스트 코드
 function testIsSubstring() {
-    const testCases = [
-        { input: ["abc", "aabcc"], expected: true },
-        { input: ["abc", "def"], expected: false },
-        { input: ["hello", "hello world"], expected: true },
-        { input: ["test", "testing"], expected: true },
-        { input: ["apple", "pineapple"], expected: true },
-        { input: ["", "anystring"], expected: true }, // 빈 문자열은 항상 포함됨
-        { input: ["anystring", ""], expected: false }, // 어떤 문자열도 빈 문자열에 포함되지 않음
-        { input: ["a", "a"], expected: true }, // 동일한 한 글자 문자열
-        { input: ["longerstring", "short"], expected: false }, // 첫 번째 문자열이 더 긴 경우
-        { input: ["abc", "ababc"], expected: true }, // 첫 번째 문자열이 두 번째 문자열의 중간에 포함되는 경우
-        { input: ["abc", "abcabcabc"], expected: true }, // 첫 번째 문자열이 두 번째 문자열에 여러 번 포함되는 경우
-        { input: ["hello", "ohelloohello"], expected: true }, // 첫 번째 문자열이 두 번째 문자열의 끝과 시작에 걸쳐 있는 경우
-        { input: ["abc", "xyzxyz"], expected: false }, // 완전히 다른 문자열
-        { input: ["repeat", "repeatrepeatrepeat"], expected: true } // 첫 번째 문자열이 두 번째 문자열에 반복되는 경우
+  const testCases = [
+    { input: ["abc", "aabcc"], expected: true },
+    { input: ["abc", "def"], expected: false },
+    { input: ["hello", "hello world"], expected: true },
+    { input: ["test", "testing"], expected: true },
+    { input: ["apple", "pineapple"], expected: true },
+    { input: ["", "anystring"], expected: true }, // 빈 문자열은 항상 포함됨
+    { input: ["anystring", ""], expected: false }, // 어떤 문자열도 빈 문자열에 포함되지 않음
+    { input: ["a", "a"], expected: true }, // 동일한 한 글자 문자열
+    { input: ["longerstring", "short"], expected: false }, // 첫 번째 문자열이 더 긴 경우
+    { input: ["abc", "ababc"], expected: true }, // 첫 번째 문자열이 두 번째 문자열의 중간에 포함되는 경우
+    { input: ["abc", "abcabcabc"], expected: true }, // 첫 번째 문자열이 두 번째 문자열에 여러 번 포함되는 경우
+    { input: ["hello", "ohelloohello"], expected: true }, // 첫 번째 문자열이 두 번째 문자열의 끝과 시작에 걸쳐 있는 경우
+    { input: ["abc", "xyzxyz"], expected: false }, // 완전히 다른 문자열
+    { input: ["repeat", "repeatrepeatrepeat"], expected: true }, // 첫 번째 문자열이 두 번째 문자열에 반복되는 경우
+  ];
 
-    ];
-
-    testCases.forEach(({input, expected}, index) => {
-        try {
-            const result = isSubstring(input[0], input[1]);
-            if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
-            console.log(`Test ${index + 1}: Passed`);
-        } catch (error) {
-            console.log(`Test ${index + 1}: Failed - ${error.message}`);
-        }
-    });
+  testCases.forEach(({ input, expected }, index) => {
+    try {
+      const result = isSubstring(input[0], input[1]);
+      if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
+      console.log(`Test ${index + 1}: Passed`);
+    } catch (error) {
+      console.log(`Test ${index + 1}: Failed - ${error.message}`);
+    }
+  });
 }
 
 // 테스트 함수 호출

@@ -11,63 +11,64 @@
 // 입력: "banana"
 // 출력: 'a'
 
+function mostFrequentChar(s) {
+  //객체에 비교대상과 값을 받을 곳 생성 obj {num:0 ,str:""}
+  //문자열을 순회해 문자의 개수를 obj에 받아오는 로직 생성
+  //해당 문자의 값이 숫자가 num 보다 크면 num, str을 해당 문자,값으로 교체
+  //str반환
 
-function mostFrequentChar1(s) {
-    const char = {};
-    let max = 0;
-    let maxChar = [];
-    for (let i = 0; i < s.length; i++) {
-      if (!char[s[i]]) {
-        char[s[i]] = 1;
-      } else {
-        char[s[i]]++;
-      }
+  let obj = { str: "", num: 0 };
+
+  for (i = 0; i < s.length; i++) {
+    if (!obj[s[i]]) {
+      obj[s[i]] = 1;
     }
-    for (let i in char) {
-      if (char[i] > max) {
-        max = char[i];
-        maxChar = i;
-      }
+    obj[s[i]]++;
+
+    if (obj[s[i]] > obj["num"]) {
+      obj["num"] = obj[s[i]];
+      obj["str"] = s[i];
     }
-    return maxChar;
   }
+  return obj["str"];
+}
 
 function mostFrequentChar2(s) {
-    const charCount = {};
-    for (let i = 0; i < s.length; i++) {
-      const char = s[i];
-      charCount[char] ? (charCount[char] += 1) : (charCount[char] = 1);
-    }
-    let maxChar = "";
-    let maxCount = 0;
-    for (const char in charCount) {
-      if (charCount[char] > maxCount) {
-        maxCount = charCount[char];
-        maxChar = char;
-      }
-    }
-    return maxChar;
+  const charCount = {};
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    charCount[char] ? (charCount[char] += 1) : (charCount[char] = 1);
   }
+  let maxChar = "";
+  let maxCount = 0;
+  for (const char in charCount) {
+    if (charCount[char] > maxCount) {
+      maxCount = charCount[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
+}
 
 // 테스트 코드
 function testMostFrequentChar() {
-    const testCases = [
-        { input: "banana", expected: ['a'] },
-        { input: "appllaaaae", expected: ['a'] },
-        { input: "mississippi", expected: ['i', 's'] },
-        { input: "mississippiss", expected: ['s'] },
-        { input: "aabbcc", expected: ['a', 'b', 'c'] },
-    ];
+  const testCases = [
+    { input: "banana", expected: ["a"] },
+    { input: "appllaaaae", expected: ["a"] },
+    { input: "mississippi", expected: ["i", "s"] },
+    { input: "mississippiss", expected: ["s"] },
+    { input: "aabbcc", expected: ["a", "b", "c"] },
+  ];
 
-    testCases.forEach(({input, expected}, index) => {
-        try {
-            const result = mostFrequentChar(input);
-            if (!expected.includes(result)) throw new Error(`Expected one of ${expected}, but got ${result}`);
-            console.log(`Test ${index + 1}: Passed`);
-        } catch (error) {
-            console.log(`Test ${index + 1}: Failed - ${error.message}`);
-        }
-    });
+  testCases.forEach(({ input, expected }, index) => {
+    try {
+      const result = mostFrequentChar(input);
+      if (!expected.includes(result)) throw new Error(`Expected one of ${expected}, but got ${result}`);
+      console.log(`Test ${index + 1}: Passed`);
+    } catch (error) {
+      console.log(`Test ${index + 1}: Failed - ${error.message}`);
+    }
+  });
 }
 
 // 테스트 함수 호출 : 터미널에 node practice2-1.js 실행

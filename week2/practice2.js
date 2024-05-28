@@ -10,28 +10,28 @@
 // 출력: "olleh dlrow"
 
 function reverseEachWord(s) {
-    // 문제 풀이
+  // 문자열 띄어쓰기 기준으로 나눠, 배열화
+  // 배열 순회. 각 요소 뒤집
 }
 
-
 function testReverseEachWord() {
-    const testCases = [
-        { input: "the sky is blue", expected: "eht yks si eulb" },
-        { input: "hello world", expected: "olleh dlrow" },
-        { input: "a b c d", expected: "a b c d" },
-        { input: "Palindrome", expected: "emordnilaP" },
-        { input: "I love coding", expected: "I evol gnidoc" }
-    ];
+  const testCases = [
+    { input: "the sky is blue", expected: "eht yks si eulb" },
+    { input: "hello world", expected: "olleh dlrow" },
+    { input: "a b c d", expected: "a b c d" },
+    { input: "Palindrome", expected: "emordnilaP" },
+    { input: "I love coding", expected: "I evol gnidoc" },
+  ];
 
-    testCases.forEach(({input, expected}, index) => {
-        try {
-            const result = reverseEachWord(input);
-            if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
-            console.log(`Test ${index + 1}: Passed`);
-        } catch (error) {
-            console.log(`Test ${index + 1}: Failed - ${error.message}`);
-        }
-    });
+  testCases.forEach(({ input, expected }, index) => {
+    try {
+      const result = reverseEachWord(input);
+      if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
+      console.log(`Test ${index + 1}: Passed`);
+    } catch (error) {
+      console.log(`Test ${index + 1}: Failed - ${error.message}`);
+    }
+  });
 }
 
 // 테스트 함수 호출
