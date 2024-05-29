@@ -11,9 +11,12 @@
 
 function reverseEachWord(s) {
   // 문자열 띄어쓰기 기준으로 나눠, 배열화
-  // 배열 순회. 각 요소 뒤집
-}
+  // 배열 순회. 각 요소 뒤집어 새 배열 반환/ 합치기
+  const Arr = s.split(" ");
 
+  const answer = Arr.map((e) => [...e].reverse().join(""));
+  return answer.join(" ");
+}
 function testReverseEachWord() {
   const testCases = [
     { input: "the sky is blue", expected: "eht yks si eulb" },
