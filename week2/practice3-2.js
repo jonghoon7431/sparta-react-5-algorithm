@@ -12,31 +12,28 @@
 // 입력: "hello"
 // 출력: false
 
-
-function isPalindrome(s) {
-    // 문제 풀이
-}
+function isPalindrome(s) {}
 
 // 테스트 코드
 function testIsPalindrome() {
-    const testCases = [
-        { input: "A man, a plan, a canal, Panama", expected: true },
-        { input: "hello", expected: false },
-        { input: "racecar", expected: true },
-        { input: "No 'x' in Nixon", expected: true },
-        { input: "Was it a car or a cat I saw?", expected: true },
-        { input: "Not a palindrome", expected: false }
-    ];
+  const testCases = [
+    { input: "A man, a plan, a canal, Panama", expected: true },
+    { input: "hello", expected: false },
+    { input: "racecar", expected: true },
+    { input: "No 'x' in Nixon", expected: true },
+    { input: "Was it a car or a cat I saw?", expected: true },
+    { input: "Not a palindrome", expected: false },
+  ];
 
-    testCases.forEach(({input, expected}, index) => {
-        try {
-            const result = isPalindrome(input);
-            if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
-            console.log(`Test ${index + 1}: Passed`);
-        } catch (error) {
-            console.log(`Test ${index + 1}: Failed - ${error.message}`);
-        }
-    });
+  testCases.forEach(({ input, expected }, index) => {
+    try {
+      const result = isPalindrome(input);
+      if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
+      console.log(`Test ${index + 1}: Passed`);
+    } catch (error) {
+      console.log(`Test ${index + 1}: Failed - ${error.message}`);
+    }
+  });
 }
 
 // 테스트 함수 호출

@@ -9,28 +9,33 @@
 // 출력: "world hello"
 
 function reverseWords(s) {
-    // 문제 풀이
+  const word = s.split(" ");
+  const arr = [];
+  for (let i = word.length - 1; i >= 0; i--) {
+    arr.push(word[i]);
+  }
+  return arr.join(" ");
 }
 
 // 테스트 코드
 function testReverseWords() {
-    const testCases = [
-        { input: "the sky is blue", expected: "blue is sky the" },
-        { input: "hello world", expected: "world hello" },
-        { input: "a b c d", expected: "d c b a" },
-        { input: "Palindrome", expected: "Palindrome" },
-        { input: "I love coding", expected: "coding love I" }
-    ];
+  const testCases = [
+    { input: "the sky is blue", expected: "blue is sky the" },
+    { input: "hello world", expected: "world hello" },
+    { input: "a b c d", expected: "d c b a" },
+    { input: "Palindrome", expected: "Palindrome" },
+    { input: "I love coding", expected: "coding love I" },
+  ];
 
-    testCases.forEach(({input, expected}, index) => {
-        try {
-            const result = reverseWords(input);
-            if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
-            console.log(`Test ${index + 1}: Passed`);
-        } catch (error) {
-            console.log(`Test ${index + 1}: Failed - ${error.message}`);
-        }
-    });
+  testCases.forEach(({ input, expected }, index) => {
+    try {
+      const result = reverseWords(input);
+      if (result !== expected) throw new Error(`Expected ${expected}, but got ${result}`);
+      console.log(`Test ${index + 1}: Passed`);
+    } catch (error) {
+      console.log(`Test ${index + 1}: Failed - ${error.message}`);
+    }
+  });
 }
 
 // 테스트 함수 호출
